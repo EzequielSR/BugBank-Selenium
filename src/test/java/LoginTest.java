@@ -1,12 +1,11 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class LoginTest {
     private WebDriver driver;
 
@@ -24,14 +23,6 @@ public class LoginTest {
             driver.quit();
         }
     }
-
-    @Test
-    public void testLoginComSucesso() {
-        realizarCadastro("nometeste@gmail.com", "testeUsuario", "Senha123");
-        realizarLogin("nometeste@gmail.com", "Senha123");
-
-    }
-
     private void realizarCadastro(String email, String nome, String senha) {
         driver.findElement(By.xpath("//*[@id='__next']/div/div[2]/div/div[1]/form/div[3]/button[2]")).click();
         driver.findElement(By.xpath("//*[@id='__next']/div/div[2]/div/div[2]/form/div[2]/input")).sendKeys(email);
@@ -40,7 +31,7 @@ public class LoginTest {
         driver.findElement(By.xpath("//*[@id='__next']/div/div[2]/div/div[2]/form/div[5]/div/input")).sendKeys(senha);
         driver.findElement(By.xpath("//*[@id='__next']/div/div[2]/div/div[2]/form/button")).click();
 
-        fecharModalSucesso();
+        fecharModal();
     }
 
     private void realizarLogin(String email, String senha) {
@@ -49,9 +40,25 @@ public class LoginTest {
         driver.findElement(By.xpath("//*[@id='__next']/div/div[2]/div/div[1]/form/div[3]/button[1]")).click();
     }
 
-    private void fecharModalSucesso() {
+    private void fecharModal() {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("document.getElementById('btnCloseModal').click();");
     }
+
+    @Test
+    @Order(1)
+    public void testLoginComSucesso() {
+        realizarCadastro("nometeste@gmail.com", "testeUsuario", "Senha123");
+        realizarLogin("nometeste@gmail.com", "Senha123");
+
+    }
+
+    @Test
+    @Order(2)
+    public void testLoginSemSucesso(){
+        realizarLogin("nometeste@gmail.com","senha123");
+        fecharModal();
+    }
+
 
 }

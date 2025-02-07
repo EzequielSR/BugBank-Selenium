@@ -3,6 +3,7 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.edge.EdgeDriver;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CadastroTest {
     private WebDriver driver;
 
@@ -21,13 +22,6 @@ public class CadastroTest {
         }
     }
 
-    @Test
-    public void testCadastroUsuario() {
-        clicarBotaoRegistrar();
-        realizarCadastro("nometeste@gmail.com", "testeUsuario", "Senha123");
-
-    }
-
     private void clicarBotaoRegistrar() {
         driver.findElement(By.xpath("//*[@id='__next']/div/div[2]/div/div[1]/form/div[3]/button[2]"))
                 .click();
@@ -39,12 +33,34 @@ public class CadastroTest {
         driver.findElement(By.xpath("//*[@id='__next']/div/div[2]/div/div[2]/form/div[4]/div/input")).sendKeys(senha);
         driver.findElement(By.xpath("//*[@id='__next']/div/div[2]/div/div[2]/form/div[5]/div/input")).sendKeys(senha);
         driver.findElement(By.xpath("//*[@id='__next']/div/div[2]/div/div[2]/form/button")).click();
-
-        fecharModalSucesso();
     }
 
     private void fecharModalSucesso() {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("document.getElementById('btnCloseModal').click();");
     }
+
+    private void botaoComSaldo() {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("document.querySelector(\"#__next > div > div.pages__FormBackground-sc-1ee1f2s-2.jNpkvU > div > div.card__register > form > div.styles__ContainerToggle-sc-7fhc7g-2.cJsFYf > label\").click();");
+    }
+
+    @Test
+    @Order(1)
+    public void testCadastroComSaldo() {
+        clicarBotaoRegistrar();
+        realizarCadastro("nometeste@gmail.com", "testeUsuario", "Senha123");
+        botaoComSaldo();
+        fecharModalSucesso();
+    }
+
+    @Test
+    @Order(2)
+    public void testCadastroSemSaldo() {
+        clicarBotaoRegistrar();
+        realizarCadastro("nometeste@gmail.com", "testeUsuario", "Senha123");
+        fecharModalSucesso();
+    }
+
+
 }
