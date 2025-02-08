@@ -35,7 +35,7 @@ public class CadastroTest {
         driver.findElement(By.xpath("//*[@id='__next']/div/div[2]/div/div[2]/form/button")).click();
     }
 
-    private void fecharModalSucesso() {
+    private void fecharModal() {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("document.getElementById('btnCloseModal').click();");
     }
@@ -51,7 +51,7 @@ public class CadastroTest {
         clicarBotaoRegistrar();
         realizarCadastro("nometeste@gmail.com", "testeUsuario", "Senha123");
         botaoComSaldo();
-        fecharModalSucesso();
+        fecharModal();
     }
 
     @Test
@@ -59,8 +59,36 @@ public class CadastroTest {
     public void testCadastroSemSaldo() {
         clicarBotaoRegistrar();
         realizarCadastro("nometeste@gmail.com", "testeUsuario", "Senha123");
-        fecharModalSucesso();
+        fecharModal();
     }
 
+    @Test
+    @Order(3)
+    public void testFalhaCadastroSemEmail() {
+        clicarBotaoRegistrar();
+        realizarCadastro("", "testeUsuario", "Senha123");
+        WebElement emailErroInput = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div[2]/div/div[2]/form/div[2]/p"));
+        Assertions.assertTrue(emailErroInput.isDisplayed());
+    }
+
+    @Test
+    @Order(4)
+    public void testFalhaCadastroSemNome() {
+        clicarBotaoRegistrar();
+        realizarCadastro("gmailteste@gmail.com", "", "Senha123");
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("document.getElementById('modalText');");
+        fecharModal();
+    }
+
+    @Test
+    @Order(5)
+    public void testFalhaCadastrarSemSenha() {
+        clicarBotaoRegistrar();
+        realizarCadastro("nometeste@gmail.com", "usuarioAleatorio", "");
+        WebElement senhaErroInput = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div[2]/div/div[2]/form/div[4]/div/p"));
+        Assertions.assertTrue(senhaErroInput.isDisplayed());
+
+    }
 
 }
