@@ -1,31 +1,17 @@
 import app.netlify.bugbank.pages.Cadastro;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.edge.EdgeDriver;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class CadastroTest{
-    private WebDriver driver;
+public class CadastroTest extends BaseTest {
     private Cadastro cadastro;
 
     @BeforeEach
     public void setUp() {
-        WebDriverManager.edgedriver().setup();
-        driver = new EdgeDriver();
+        super.setUp();
         cadastro = new Cadastro(driver);
-        driver.get("https://bugbank.netlify.app/");
-        driver.manage().window().maximize();
-    }
-
-    @AfterEach
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
     }
 
 
