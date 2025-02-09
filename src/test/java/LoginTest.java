@@ -23,6 +23,7 @@ public class LoginTest {
             driver.quit();
         }
     }
+
     private void realizarCadastro(String email, String nome, String senha) {
         driver.findElement(By.xpath("//*[@id='__next']/div/div[2]/div/div[1]/form/div[3]/button[2]")).click();
         driver.findElement(By.xpath("//*[@id='__next']/div/div[2]/div/div[2]/form/div[2]/input")).sendKeys(email);
@@ -55,8 +56,8 @@ public class LoginTest {
 
     @Test
     @Order(2)
-    public void testLoginSemSucesso(){
-        realizarLogin("nometeste@gmail.com","senha123");
+    public void testLoginSemSucesso() {
+        realizarLogin("nometeste@gmail.com", "senha123");
         fecharModal();
     }
 
