@@ -7,11 +7,11 @@ Este arquivo contém a documentação detalhada dos casos de teste aplicados ao 
 ---
 
 ## **📚 Índice**
-1. [Cenário de Teste 1 - Registro com Sucesso](#cenário-de-teste-1---registro-com-sucesso)
+1. [Cenário de Teste 1 - Registro com Sucesso](#cenário-de-teste-1---cadastro-com-sucesso)
 2. [Cenário de Teste 2 - Login com Sucesso](#cenário-de-teste-2---login-com-sucesso)
 3. [Cenário de Teste 3 - Transferência com Sucesso](#cenário-de-teste-3---transferência-com-sucesso)
 4. [Cenário de Teste 4 - Verificação de Extrato com Sucesso](#cenário-de-teste-4---verificação-de-extrato-com-sucesso)
-5. [Cenário de Teste 5 - Registro com Dados Incompletos](#cenário-de-teste-5---registro-com-dados-incompletos)
+5. [Cenário de Teste 5 - Registro com Dados Incompletos](#cenário-de-teste-5---cadastro-com-dados-incompletos)
 6. [Cenário de Teste 6 - Login com Dados Inválidos](#cenário-de-teste-6---login-com-dados-inválidos)
 7. [Cenário de Teste 7 - Transferência com Falhas](#cenário-de-teste-7---transferência-com-falhas)
 9. [Observações](#-observações)
@@ -56,9 +56,10 @@ Este arquivo contém a documentação detalhada dos casos de teste aplicados ao 
 
 | Passo | Descrição                      | Resultado Esperado                                |
 |-------|--------------------------------|-------------------------------------------------|
-| 1     | Acesse a página de login      | Tela de login é carregada corretamente          |
-| 2     | Insira um email válido         | Campo de email aceita o dado inserido           |
-| 3     | Insira a senha correspondente  | Campo de senha aceita o dado inserido           |
+| 1     | Crie uma conta em Registrar   | Formulário de registro é carregado  |
+| 2     | Acesse a página de login      | Tela de login é carregada corretamente          |
+| 3     | Insira um email válido         | Campo de email aceita o dado inserido           |
+| 4     | Insira a senha correspondente  | Campo de senha aceita o dado inserido           |
 | 4     | Clique no botão "Entrar"       | Usuário é redirecionado para a página inicial   |
 
 **Pós-condições:**  
@@ -184,7 +185,7 @@ Este arquivo contém a documentação detalhada dos casos de teste aplicados ao 
 ## **🔍 Observações**
 - **Ambiente de Teste**: Como o site não conta com banco de dados e usa armazenamento local, os testes precisam ser realizados em uma mesma sessão ou verificar o comportamento do armazenamento local no navegador.
 
-- **Automação de Testes**: Considere utilizar Cypress para automatizar os cenários acima.
+- **Automação de Testes**: Considere utilizar Selenium para automatizar os cenários acima.
 
 - Garanta que todos os cenários considerem testes negativos (ex: campos vazios ou dados inválidos).
 
