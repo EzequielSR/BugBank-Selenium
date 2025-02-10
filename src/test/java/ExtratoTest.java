@@ -23,6 +23,9 @@ public class ExtratoTest extends BaseTest {
         transferencia = new Transferencia(driver);
         extrato = new Extrato(driver);
     }
+    public void botaoSairPaginaPrincipal(){
+        driver.findElement(By.xpath("//*[@id='btnExit']")).click();
+    }
 
     @Test
     @Order(1)
@@ -32,7 +35,7 @@ public class ExtratoTest extends BaseTest {
         cadastro.fecharModal();
         login.realizarLogin("nometeste1@gmail.com", "Senha123");
 
-        driver.findElement(By.xpath("//*[@id='btnExit']")).click();
+        botaoSairPaginaPrincipal();
         cadastro.clicarBotaoRegistrar();
         cadastro.realizarCadastro("nometeste2@gmail.com", "testeUsuario2", "Senha123");
         cadastro.fecharModal();
@@ -40,7 +43,7 @@ public class ExtratoTest extends BaseTest {
 
         transferencia.obterDadosContaDestino();
 
-        driver.findElement(By.xpath("//*[@id='btnExit']")).click();
+        botaoSairPaginaPrincipal();
         login.realizarLogin("nometeste1@gmail.com", "Senha123");
 
         transferencia.realizarTransferencia();
