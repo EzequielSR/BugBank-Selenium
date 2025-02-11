@@ -12,9 +12,8 @@ Este arquivo contém a documentação detalhada dos casos de teste aplicados ao 
 3. [Cenário de Teste 3 - Transferência com Sucesso](#cenário-de-teste-3---transferência-com-sucesso)
 4. [Cenário de Teste 4 - Verificação de Extrato com Sucesso](#cenário-de-teste-4---verificação-de-extrato-com-sucesso)
 5. [Cenário de Teste 5 - Registro com Dados Incompletos](#cenário-de-teste-5---cadastro-com-dados-incompletos)
-6. [Cenário de Teste 6 - Login com Dados Inválidos](#cenário-de-teste-6---login-com-dados-inválidos)
-7. [Cenário de Teste 7 - Transferência com Falhas](#cenário-de-teste-7---transferência-com-falhas)
-9. [Observações](#-observações)
+6. [Cenário de Teste 6 - Transferência com Falhas](#cenário-de-teste-6---transferência-com-falhas)
+7. [Observações](#-observações)
 
 ---
 
@@ -137,31 +136,8 @@ Este arquivo contém a documentação detalhada dos casos de teste aplicados ao 
 
 ---
 
-### **Cenário de Teste 6 - Login com Dados Inválidos**
-**ID:** CT-005  
-**Título:** Tentativa de Login com Dados Inválidos  
 
-**Pré-condições:**  
-- Usuário não está logado  
-- Usuário possui ou não uma conta cadastrada  
-
-**Passos:**
-
-| Passo | Descrição                                                                 | Resultado Esperado                                   |
-|-------|---------------------------------------------------------------------------|----------------------------------------------------|
-| 1     | Acesse a página de login                                                 | Tela de login é carregada corretamente             |
-| 2     | Insira um email válido e uma senha incorreta e clique em "Entrar"        | Mensagem de erro: "Usuário ou senha inválidos. Tente novamente ou verifique suas informações!"   |
-| 3     | Insira um email inexistente no campo de email e clique em "Entrar"       | Mensagem de erro: "Usuário ou senha inválidos. Tente novamente ou verifique suas informações!"   |
-| 4     | Tente fazer login sem preencher os campos obrigatórios                   | Mensagem de erro: "É campo obrigatório" |
-
-**Pós-condições:**  
-- O usuário permanece na tela de login  
-
----
-
-
-
-### **Cenário de Teste 7 - Transferência com Falhas**
+### **Cenário de Teste 6 - Transferência com Falhas**
 **ID:** CT-007  
 **Título:** Tentativa de Transferência com Falhas  
 
